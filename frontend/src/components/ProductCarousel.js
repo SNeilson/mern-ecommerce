@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import { Carousel, Image } from 'react-bootstrap'
+import { Carousel, Image, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from './Loader'
 import Message from './Message'
@@ -23,17 +22,19 @@ const ProductCarousel = () => {
   ) : (
     <>
       <h2>Featured Products</h2>
-      <Carousel pause='hover' className='bg-dark'>
+      <Carousel pause='hover' className='bg-dark featured-products'>
         {products.map((product) => (
           <Carousel.Item key={product._id}>
-            <Link to={`/product/${product._id}`}>
-              <Image src={product.image} alt={product.name} fluid />
-              <Carousel.Caption className='carousel-caption'>
+            <Row className='align-items-center'>
+              <Col sm>
+                <Image src={product.image} alt={product.name} fluid />
+              </Col>
+              <Col sm className='px-5 py-5 text-center'>
                 <h2>
                   {product.name} (£{product.price})
                 </h2>
-              </Carousel.Caption>
-            </Link>
+              </Col>
+            </Row>
           </Carousel.Item>
         ))}
       </Carousel>

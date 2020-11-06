@@ -3,11 +3,11 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className='footer mt-auto py-3 bg-dark text-white'>
       <Container>
         <Row>
           <Col className='text-center py-3'>
-            Copyright &copy; simple MERN Store
+            <i className='fab fa-react'></i> Simple MERN Store
           </Col>
         </Row>
       </Container>

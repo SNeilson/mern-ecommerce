@@ -6,6 +6,8 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import SearchBox from './SearchBox'
 import { logout } from '../actions/userActions'
 import { useHistory } from 'react-router-dom'
+import CartInfo from './CartInfo'
+import MiniCart from './MiniCart'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -20,20 +22,20 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect fixed='top'>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>ProShop</Navbar.Brand>
+            <Navbar.Brand>
+              <i className='fab fa-react'></i> Simple MERN Store
+            </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Route render={({ history }) => <SearchBox history={history} />} />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
-              <LinkContainer to='/cart'>
-                <Nav.Link>
-                  <i className='fas fa-shopping-cart'></i> Cart
-                </Nav.Link>
-              </LinkContainer>
+              <NavDropdown title={<CartInfo />} alignRight>
+                <MiniCart />
+              </NavDropdown>
+
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/profile'>
@@ -66,6 +68,9 @@ const Header = () => {
                   </LinkContainer>
                 </NavDropdown>
               )}
+              <Route
+                render={({ history }) => <SearchBox history={history} />}
+              />
             </Nav>
           </Navbar.Collapse>
         </Container>
