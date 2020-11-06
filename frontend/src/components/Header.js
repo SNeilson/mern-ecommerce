@@ -32,7 +32,11 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto'>
-              <NavDropdown title={<CartInfo />} alignRight>
+              <NavDropdown
+                title={<CartInfo />}
+                alignRight
+                className='cartdropdown'
+              >
                 <MiniCart />
               </NavDropdown>
 
